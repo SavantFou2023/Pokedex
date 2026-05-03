@@ -163,15 +163,15 @@ body.dragging .pokemon-card:hover{
   background: rgba(0, 0, 0, 0.54);
 }
 
-.img1 { background-image: url("images/gen1.jpg"); }
-.img2 { background-image: url("images/gen2.jpg"); }
-.img3 { background-image: url("images/gen3.jpg"); }
-.img4 { background-image: url("images/gen4.jpg"); }
-.img5 { background-image: url("images/gen5.jpg"); }
-.img6 { background-image: url("images/gen6.jpg"); }
-.img7 { background-image: url("images/gen7.jpg"); }
-.img8 { background-image: url("images/gen8.jpg"); }
-.img9 { background-image: url("images/gen9.jpg"); }
+.img1 { background-image: url("gen1.jpg"); }
+.img2 { background-image: url("gen2.jpg"); }
+.img3 { background-image: url("gen3.jpg"); }
+.img4 { background-image: url("gen4.jpg"); }
+.img5 { background-image: url("gen5.jpg"); }
+.img6 { background-image: url("gen6.jpg"); }
+.img7 { background-image: url("gen7.jpg"); }
+.img8 { background-image: url("gen8.jpg"); }
+.img9 { background-image: url("gen9.jpg"); }
 
 /* PAGE ANNEX : PAGE-GEN1.HTML --> PAGE-GEN9.HTML */
 
