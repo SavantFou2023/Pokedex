@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex Génération 3</title>
+    <link rel="stylesheet" href="pokedex.css" />
+  </head>
+
+  <body class="body">
+    <div class="search-container">
+      <input type="text" placeholder="Rechercher un Pokémon..." class="search-bar" />
+    </div>
+
+    <div class="volume-container">
+      <button id="playBtn">▶️</button>
+      <button id="muteBtn">🔊</button>
+      <span>0</span>
+      <input type="range" min="0" max="1" step="0.01" value="0.5" id="volumeSlider" />
+      <span>100</span>
+    </div>
+
+    <audio id="audio" src="opening-track.mp3" loop></audio>
+
+    <div class="pokemon-section">
+      <div class="pokemon-grid" id="grid"></div>
+    </div>
+
+    <div class="detail-overlay hidden" id="detailOverlay" aria-hidden="true">
+      <div class="detail-card" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <button class="detail-close" id="detailClose" aria-label="Fermer le détail">×</button>
+        <div class="detail-content">
+          <div class="detail-loader">Chargement du Pokémon...</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.POKEDEX_GENERATION = 3;
+    </script>
+    <script src="page-generation.js"></script>
+  </body>
+</html>

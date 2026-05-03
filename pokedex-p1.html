@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page d'Accueil Pokedex</title>
+    <link rel="stylesheet" href="pokedex.css" />
+  </head>
+
+  <body class="js-un-tdc-body">
+    <div class="search-container">
+      <input type="text" placeholder="Pokédex toutes générations" class="search-bar" />
+    </div>
+
+    <div class="grid" id="generationGrid">
+      <a href="page-gen1.html" class="box img1">
+        <span>Gen 1<br />#0001<br />#0151</span>
+      </a>
+      <a href="page-gen2.html" class="box img2">
+        <span>Gen 2<br />#0152<br />#0251</span>
+      </a>
+      <a href="page-gen3.html" class="box img3">
+        <span>Gen 3<br />#0252<br />#0386</span>
+      </a>
+      <a href="page-gen4.html" class="box img4">
+        <span>Gen 4<br />#0387<br />#0493</span>
+      </a>
+      <a href="page-gen5.html" class="box img5">
+        <span>Gen 5<br />#0494<br />#0649</span>
+      </a>
+      <a href="page-gen6.html" class="box img6">
+        <span>Gen 6<br />#0650<br />#0721</span>
+      </a>
+      <a href="page-gen7.html" class="box img7">
+        <span>Gen 7<br />#0722<br />#0809</span>
+      </a>
+      <a href="page-gen8.html" class="box img8">
+        <span>Gen 8<br />#0810<br />#0905</span>
+      </a>
+      <a href="page-gen9.html" class="box img9">
+        <span>Gen 9<br />#0906<br />#1025</span>
+      </a>
+    </div>
+
+    <div class="search-status" id="searchStatus">Recherche sur toutes les générations. Tapez pour chercher.</div>
+
+    <div class="pokemon-section" id="pokemonSection" style="display: none;">
+      <div class="search-grid" id="grid"></div>
+    </div>
+
+    <div class="detail-overlay hidden" id="detailOverlay" aria-hidden="true">
+      <div class="detail-card" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <button class="detail-close" id="detailClose" aria-label="Fermer le détail">×</button>
+        <div class="detail-content">
+          <div class="detail-loader">Chargement du Pokémon...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="volume-container">
+      <button id="playBtn">▶️</button>
+      <button id="muteBtn">🔊</button>
+      
+      <span>0</span>
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.5"
+        id="volumeSlider"
+      />
+      <span>100</span>
+    </div>
+
+    <audio id="audio" src="opening-track.mp3" loop></audio>
+
+<script>
+  window.POKEDEX_GENERATION = "all";
+</script>
+<script src="page-generation.js"></script>
+<script>
+  const audio = document.getElementById("audio");
+  const slider = document.getElementById("volumeSlider");
+  const muteBtn = document.getElementById("muteBtn");
+  const playBtn = document.getElementById("playBtn");
+  const volumeContainer = document.querySelector(".volume-container");
+
+  // VOLUME
+  slider.addEventListener("input", function () {
+    audio.volume = this.value;
+  });
+
+  // PLAY / PAUSE
+  playBtn.addEventListener("click", function () {
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = "⏸️";
+    } else {
+      audio.pause();
+      playBtn.textContent = "▶️";
+    }
+  });
+
+  // MUTE
+  muteBtn.addEventListener("click", function () {
+    audio.muted = !audio.muted;
+    muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+  });
+
+  // DRAG & DROP
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  volumeContainer.addEventListener("mousedown", (e) => {
+    isDragging = true;
+
+    volumeContainer.classList.add("dragging");
+    document.body.classList.add("dragging");
+
+    offsetX = e.clientX - volumeContainer.offsetLeft;
+    offsetY = e.clientY - volumeContainer.offsetTop;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    volumeContainer.style.left = (e.clientX - offsetX) + "px";
+    volumeContainer.style.top = (e.clientY - offsetY) + "px";
+
+    volumeContainer.style.right = "auto";
+    volumeContainer.style.bottom = "auto";
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+
+    volumeContainer.classList.remove("dragging");
+    document.body.classList.remove("dragging");
+  });
+</script>
+
+  </body>
+</html>
+
